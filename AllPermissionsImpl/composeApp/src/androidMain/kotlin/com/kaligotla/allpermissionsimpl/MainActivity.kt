@@ -6,6 +6,10 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.darkColors
+import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,9 +31,13 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-            App(
-                koin = koinApplication.koin
-            )
+            MaterialTheme(
+                colors = if (isSystemInDarkTheme()) darkColors() else lightColors()
+            ) {
+                App(
+                    koin = koinApplication.koin
+                )
+            }
         }
     }
 }

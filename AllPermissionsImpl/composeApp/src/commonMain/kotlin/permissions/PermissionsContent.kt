@@ -62,9 +62,7 @@ internal fun PermissionsContent(
     val scope = rememberCoroutineScope()
     var density by remember { mutableStateOf(1f) }
 
-    MaterialTheme(
-        colors = if (isSystemInDarkTheme()) darkColors() else lightColors()
-    ) {
+    MaterialTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
