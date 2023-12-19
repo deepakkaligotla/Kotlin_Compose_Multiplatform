@@ -35,9 +35,9 @@ class IOSPermissionChecker: PermissionChecker {
         }
 
     override val isMobileDataEnabled: Boolean
-        get() = when(CTCellularData().restrictedState) {
-            CTCellularDataRestrictedState.kCTCellularDataNotRestricted -> true
-            CTCellularDataRestrictedState.kCTCellularDataRestricted, CTCellularDataRestrictedState.kCTCellularDataRestrictedStateUnknown -> false
+        get() = when {
+            functions.isMobileDataEnabled() -> true
+            !functions.isMobileDataEnabled() -> false
             else -> false
         }
 

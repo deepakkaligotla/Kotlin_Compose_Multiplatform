@@ -8,8 +8,8 @@ import platform.CoreTelephony.CTCellularDataRestrictedState
 internal class MobileDataServicePermissionDelegate : PermissionDelegate {
     override fun getPermissionState(): PermissionState {
         return when {
-            isMobileDataEnabled() -> PermissionState.GRANTED
-            !isMobileDataEnabled() -> PermissionState.DENIED
+            functions.isMobileDataEnabled() -> PermissionState.GRANTED
+            !functions.isMobileDataEnabled() -> PermissionState.DENIED
             else -> PermissionState.NOT_DETERMINED
         }
     }
