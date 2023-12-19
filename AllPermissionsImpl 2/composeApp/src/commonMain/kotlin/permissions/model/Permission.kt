@@ -1,0 +1,38 @@
+package permissions.model
+
+enum class Service {
+    BLUETOOTH_SERVICE_ON,
+    HOTSPOT_SERVICE_ON,
+    LOCATION_SERVICE_ON,
+    MOBILE_DATA_SERVICE_ON,
+    WIFI_SERVICE_ON,
+}
+
+enum class Permission {
+    CALENDAR,
+    CAMERA,
+    CONTACT,
+    BLUETOOTH,
+    LOCATION_FOREGROUND,
+    LOCATION_BACKGROUND,
+    MICROPHONE,
+    AUDIO_MUSIC,
+    NOTIFICATION,
+    PHONE,
+    PHOTO,
+    SMS
+}
+
+enum class Permission_Android {
+    CALL_LOGS,
+    BODY_SENSOR,
+    BODY_SENSOR_BACKGROUND,
+    PHYSICAL_ACTIVITY
+}
+
+enum class Permission_iOS {
+    APP_TRACKING_TRANSPARENCY,
+    MOTION_FITNESS,
+    REMINDER,
+    SPEECH_RECOGNITION,
+}
