@@ -8,8 +8,11 @@ internal class LocationServicePermissionDelegate : PermissionDelegate {
     private val locationManager = CLLocationManager()
 
     override fun getPermissionState(): PermissionState {
-        return if (locationManager.locationServicesEnabled())
-            PermissionState.GRANTED else PermissionState.DENIED
+        return when {
+            functions.isLocationEnabled() -> PermissionState.GRANTED
+            !functions.isLocationEnabled() -> PermissionState.DENIED
+            else -> PermissionState.NOT_DETERMINED
+        }
     }
 
     override suspend fun providePermission() {

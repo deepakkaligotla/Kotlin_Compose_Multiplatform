@@ -10,23 +10,13 @@ import platform.CoreBluetooth.CBManagerStatePoweredOn
 import platform.darwin.NSObject
 
 internal class BluetoothServicePermissionDelegate : PermissionDelegate {
-    private val cbCentralManager: CBCentralManager by lazy {
-        CBCentralManager(
-            object : NSObject(), CBCentralManagerDelegateProtocol {
-                override fun centralManagerDidUpdateState(central: CBCentralManager) {}
-            },
-            null
-        )
-    }
 
     override fun getPermissionState(): PermissionState {
-        val hasBluetoothPermissionGranted =
-            CBCentralManager.authorization == CBManagerAuthorizationAllowedAlways ||
-                    CBCentralManager.authorization == CBManagerAuthorizationRestricted
-        return if (hasBluetoothPermissionGranted) {
-            if (cbCentralManager.state() == CBManagerStatePoweredOn)
-                PermissionState.GRANTED else PermissionState.DENIED
-        } else PermissionState.NOT_DETERMINED
+        return when {
+            functions.isBluetoothEnabled() -> PermissionState.GRANTED
+            !functions.isBluetoothEnabled() -> PermissionState.DENIED
+            else -> PermissionState.NOT_DETERMINED
+        }
     }
 
     override suspend fun providePermission() {
