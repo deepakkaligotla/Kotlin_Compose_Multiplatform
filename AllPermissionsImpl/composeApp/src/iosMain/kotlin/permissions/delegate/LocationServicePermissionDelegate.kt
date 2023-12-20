@@ -5,7 +5,6 @@ import permissions.util.openNSUrl
 import platform.CoreLocation.CLLocationManager
 
 internal class LocationServicePermissionDelegate : PermissionDelegate {
-    private val locationManager = CLLocationManager()
 
     override fun getPermissionState(): PermissionState {
         return when {

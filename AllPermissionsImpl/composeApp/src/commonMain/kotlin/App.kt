@@ -18,7 +18,9 @@ import permissions.service.Services
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App(koin: Koin) {
-    MaterialTheme {
+    MaterialTheme(
+        colorScheme = if(isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
+    ) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             PermissionsContent(
                 services = koin.get<Services>(),

@@ -1,25 +1,41 @@
-import com.kaligotla.testing.getPermissionChecker
+import com.kaligotla.allpermissionsimpl.testing.PermissionChecker
+import com.kaligotla.allpermissionsimpl.testing.getPermissionChecker
 import kotlin.test.Test
 import kotlin.test.assertTrue
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
 
 class ServicesTest {
+
+    private lateinit var permissionChecker: PermissionChecker
+
+    @BeforeTest
+    fun setUp() {
+        permissionChecker = getPermissionChecker()
+    }
+
     @Test
     fun checkBluetoothService() {
-        assertTrue(getPermissionChecker().isBluetoothEnabled, "Wifi should be enabled.")
+        assertTrue(permissionChecker.isBluetoothEnabled, "Bluetooth should be enabled.")
     }
 
     @Test
     fun checkLocationService() {
-        assertTrue(getPermissionChecker().isLocationEnabled, "Wifi should be enabled.")
+        assertTrue(permissionChecker.isLocationEnabled, "Location should be enabled.")
     }
 
     @Test
     fun checkMobileDataService() {
-        assertTrue(getPermissionChecker().isMobileDataEnabled, "Mobile data should be enabled.")
+        assertTrue(permissionChecker.isMobileDataEnabled, "Mobile data should be enabled.")
     }
 
     @Test
     fun checkWifiService() {
-        assertTrue(getPermissionChecker().isWifiEnabled, "Wifi should be enabled.")
+        assertTrue(permissionChecker.isWifiEnabled, "Wifi should be enabled.")
+    }
+
+    @AfterTest
+    fun tearDown() {
+
     }
 }

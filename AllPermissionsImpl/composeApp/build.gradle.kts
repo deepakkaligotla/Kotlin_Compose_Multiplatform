@@ -15,7 +15,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -26,7 +26,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         iosMain.dependencies {
 
@@ -35,17 +35,26 @@ kotlin {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.koin.android)
+            implementation(libs.core.ktx)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
-            implementation(compose.material3)
             implementation(compose.ui)
-            implementation(compose.materialIconsExtended)
-            implementation(libs.koin.core)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            implementation(projects.shared)
+
+            implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
+            implementation(libs.koin.core)
+        }
+        iosTest.dependencies {
+
+        }
+        androidNativeTest.dependencies {
+            implementation(libs.androidx.test.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -86,4 +95,3 @@ android {
         debugImplementation(libs.compose.ui.tooling)
     }
 }
-
