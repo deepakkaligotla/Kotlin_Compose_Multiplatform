@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import permissions.model.Permission
 import permissions.model.PermissionState
+import permissions.model.Permission_Android
 import permissions.util.PermissionRequestException
 import permissions.util.checkPermissions
 import permissions.util.openAppSettingsPage
@@ -20,12 +21,12 @@ internal class SmsPermissionDelegate(
 
     override suspend fun providePermission() {
         activity.value.providePermissions(smsPermissions) {
-            throw PermissionRequestException(Permission.SMS.name)
+            throw PermissionRequestException(Permission_Android.SMS.name)
         }
     }
 
     override fun openSettingPage() {
-        context.openAppSettingsPage(Permission.SMS)
+        context.openAppSettingsPage(Permission_Android.SMS)
     }
 }
 

@@ -50,6 +50,7 @@ val permissionsModule: Module = module {
 
 interface Platform {
     val name: String
+    val isSystemInDarkTheme: Boolean
 }
 
 expect fun getPlatform(): Platform

@@ -20,7 +20,6 @@ import permissions.delegate.MotionFitnessPermissionDelegate
 import permissions.delegate.NotificationsPermissionDelegate
 import permissions.delegate.PhotoPermissionDelegate
 import permissions.delegate.ReminderPermissionDelegate
-import permissions.delegate.SmsPermissionDelegate
 import permissions.delegate.SpeechRecognitionPermissionDelegate
 import permissions.delegate.WifiServicePermissionDelegate
 import permissions.model.Permission_iOS
@@ -75,9 +74,6 @@ internal actual fun platformModule(): Module = module {
     single<PermissionDelegate>(named(Permission.PHOTO.name)) {
         PhotoPermissionDelegate()
     }
-    single<PermissionDelegate>(named(Permission.SMS.name)) {
-        SmsPermissionDelegate()
-    }
     single<PermissionDelegate>(named(Permission_iOS.SPEECH_RECOGNITION.name)) {
         SpeechRecognitionPermissionDelegate()
     }
@@ -94,6 +90,8 @@ internal actual fun platformModule(): Module = module {
 
 class IOSPlatform: Platform {
     override val name: String = UIDevice.currentDevice.systemName()
+    override val isSystemInDarkTheme: Boolean
+        get() = true
 }
 
 actual fun getPlatform(): Platform = IOSPlatform()

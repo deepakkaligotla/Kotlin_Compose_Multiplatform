@@ -1,5 +1,4 @@
 import androidx.compose.ui.window.ComposeUIViewController
-
 import permissions.PermissionsContent
 import permissions.service.AndroidPermissions
 import permissions.service.IosPermissions

@@ -146,7 +146,7 @@ internal actual fun platformModule(): Module = module {
             activity = inject(),
         )
     }
-    single<PermissionDelegate>(named(Permission.PHONE.name)) {
+    single<PermissionDelegate>(named(Permission_Android.PHONE.name)) {
         PhonePermissionDelegate(
             context = get(),
             activity = inject(),
@@ -164,7 +164,7 @@ internal actual fun platformModule(): Module = module {
             activity = inject(),
         )
     }
-    single<PermissionDelegate>(named(Permission.SMS.name)) {
+    single<PermissionDelegate>(named(Permission_Android.SMS.name)) {
         SmsPermissionDelegate(
             context = get(),
             activity = inject(),
@@ -174,6 +174,8 @@ internal actual fun platformModule(): Module = module {
 
 class AndroidPlatform : Platform {
     override val name: String = "Android"
+    override val isSystemInDarkTheme: Boolean
+        get() = true
 }
 
 actual fun getPlatform(): Platform = AndroidPlatform()

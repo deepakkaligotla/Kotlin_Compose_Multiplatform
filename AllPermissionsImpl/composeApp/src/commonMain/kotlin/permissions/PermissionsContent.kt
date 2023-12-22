@@ -61,8 +61,11 @@ internal fun PermissionsContent(
 ) {
     val scope = rememberCoroutineScope()
     var density by remember { mutableStateOf(1f) }
+    val platform: Platform = getPlatform()
 
-    MaterialTheme {
+    MaterialTheme(
+        colors = if(isSystemInDarkTheme()) darkColors() else lightColors()
+    ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
@@ -131,8 +134,6 @@ internal fun PermissionsContent(
                     )
                 }
                 Divider(modifier = Modifier.padding(top= 16.dp, bottom = 16.dp))
-
-                val platform: Platform = getPlatform()
 
                 Text(
                     text = "Specific ${platform.name} Permissions",

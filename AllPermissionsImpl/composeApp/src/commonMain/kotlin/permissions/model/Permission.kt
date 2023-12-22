@@ -18,16 +18,16 @@ enum class Permission {
     MICROPHONE,
     AUDIO_MUSIC,
     NOTIFICATION,
-    PHONE,
     PHOTO,
-    SMS
 }
 
 enum class Permission_Android {
     CALL_LOGS,
     BODY_SENSOR,
     BODY_SENSOR_BACKGROUND,
-    PHYSICAL_ACTIVITY
+    PHONE,
+    PHYSICAL_ACTIVITY,
+    SMS,
 }
 
 enum class Permission_iOS {
